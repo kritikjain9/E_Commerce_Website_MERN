@@ -15,7 +15,6 @@ const userRoutes = require("./routes/user.js");
 const categoryRoutes = require("./routes/category.js");
 const productRoutes = require("./routes/product.js");
 const orderRoutes = require("./routes/order.js");
-const paymentBRoutes = require("./routes/paymentBRoutes");
 
 
 //DB CONNECTION
@@ -52,7 +51,6 @@ app.use("/api", userRoutes);
 app.use("/api", categoryRoutes);
 app.use("/api", productRoutes);
 app.use("/api", orderRoutes);
-app.use("/api", paymentBRoutes);
 
 
 
