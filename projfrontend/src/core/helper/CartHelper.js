@@ -18,7 +18,7 @@ export const addItemToCart = (item, next) => {
         cart.push({
             ...item,
             count: 1        //pushing the item with its count = 1
-        })
+        });
         localStorage.setItem("cart", JSON.stringify(cart));
         next();
     }
@@ -59,4 +59,4 @@ export const cartEmpty = next => {
         localStorage.removeItem("cart");
         next();
     }
-}
+};
