@@ -7,3 +7,5 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+//install a few plugins before running this code
+
