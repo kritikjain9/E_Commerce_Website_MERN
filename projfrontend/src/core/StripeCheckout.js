@@ -4,6 +4,10 @@ import { isAuthenticated } from '../auth/helper';
 import { cartEmpty, loadCart } from './helper/CartHelper';
 //loadCart will help us to load all the items into out state
 import StripeCheckoutButton from 'react-stripe-checkout';
+import { API } from '../backend';
+import { createOrder } from './helper/orderHelper';
+// import {stripepayment} from ''
+
 
 
 const StripeCheckout = ({products, setReload = f => f, reload = undefined}) => {
@@ -28,6 +32,25 @@ const StripeCheckout = ({products, setReload = f => f, reload = undefined}) => {
 
     const makePayment = (token) => {
         //this token is automatically generated with the stripeKey(int the StripeCheckoutButton)
+        const body = {
+            token,
+            products
+        }
+
+        const headers = {
+            "Content-Type" : "application/json"
+        }
+
+        return fetch(`${API}/stripepayment`, {
+            method : "POST",
+            headers,
+            body : JSON.stringify(body)
+          })
+          .then(response => {
+            console.log("RESPONSE", response);
+            //
+          })
+          .catch(err => console.log(err));
 
     };
 
