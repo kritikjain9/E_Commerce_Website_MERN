@@ -60,7 +60,7 @@ const StripeCheckout = ({products, setReload = f => f, reload = undefined}) => {
         else redirect him to the login page */
         return isAuthenticated() ? (
             <StripeCheckoutButton
-                stripeKey = ""
+                stripeKey = "pk_test_51K0hkVSAV6AvQGT5kTTUFLPfiacIgePDajtOpu4ipj8tGeDe8wKPq3Z6mWXhFS2LokzpAYB8u0ypTS0qysLMADVj00gEzc3guA"
                 token = {makePayment()}
                 amount = {getFinalAmount() * 100}
                 name = "Buy Jerseys"

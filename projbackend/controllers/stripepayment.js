@@ -1,4 +1,4 @@
-const stripe = require("stripe")("SECRET_KEY");
+const stripe = require("stripe")("sk_test_51K0hkVSAV6AvQGT5jfSSwrvJEmxKA39sGPnBRe4ellqiLbdMkaUMYZPSTxXTDn7jmzX7766flvekEuzuXr5DdXBg00dRIbHK2I");
 const { v4: uuidv4 } = require('uuid');
  
 
@@ -29,7 +29,9 @@ exports.makepayment = (req, res) => {
             shipping : {
                 name : token.card.name, 
                 address : {
-                    country : token.card.address_country
+                    city : token.card.address_city, 
+                    country : token.card.address_country, 
+                    postal_code : token.card.address_ip 
                 }
             }
         }, {idempotencyKey})
