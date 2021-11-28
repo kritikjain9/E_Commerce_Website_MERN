@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { isAuthenticated } from '../auth/helper';
 import { cartEmpty, loadCart } from './helper/CartHelper';
 //loadCart will help us to load all the items into out state
+import StripeCheckoutButton from 'react-stripe-checkout';
 
 
 const StripeCheckout = ({products, setReload = f => f, reload = undefined}) => {
@@ -25,12 +26,26 @@ const StripeCheckout = ({products, setReload = f => f, reload = undefined}) => {
         return amount;
     };
 
+    const makePayment = (token) => {
+        //this token is automatically generated with the stripeKey(int the StripeCheckoutButton)
+
+    };
+
     //showing the stripe button
     const showStripeButton = () => {
         /* conditional rendering -> if the user is logged in, show him something,
         else redirect him to the login page */
         return isAuthenticated() ? (
-            <button className="btn btn-success">Pay with Stripe</button>
+            <StripeCheckoutButton
+                stripeKey = ""
+                token = {makePayment()}
+                amount = {getFinalAmount() * 100}
+                name = "Buy Jerseys"
+                shippingAddress
+                billingAddress
+            >
+                <button className="btn btn-success">Pay with Stripe</button>
+            </StripeCheckoutButton>
         ) : (
             <Link to = "/signin">
                 <button className="btn btn-warning">Sign In</button>
